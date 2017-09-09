@@ -42,4 +42,4 @@ console.log(Date.now() - start);
 
 | Before | After | Improvement |
 |--------|-------|-------------|
-| 308.38ms | 247.47ms | 1.25x |
+| 303.65ms | 246.47ms | 1.23x |
