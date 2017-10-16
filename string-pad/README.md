@@ -46,11 +46,11 @@ console.log(Date.now() - start);
 
 |        |  Method  | Before | After | Improvement |
 |--------|----------|--------|-------|-------------|
-| --noopt | padStart(maxLength, string) | 5453.35ms | 2218.30ms | 2.46x |
-| --noopt | padEnd(maxLength, string) | 5441.15ms | 2223.35ms | 2.45x |
-| --noopt | padStart(maxLength) | 6491.10ms | 3003.15ms | 2.16x |
-| --noopt | padEnd(maxLength) | 6478.25ms | 3004.90ms | 2.16x |
-|  | padStart(maxLength, string) | 1208.65ms | 773.55ms | 1.56x |
-|  | padEnd(maxLength, string) | 1200.50ms | 768.80ms | 1.56x |
-|  | padStart(maxLength) | 1053.95ms | 1027.50ms | 1.03x |
-|  | padEnd(maxLength) | 1062.15ms | 1025.00ms | 1.04x |
+| --noopt | padStart(maxLength, string) | 5497.30ms | 2267.35ms | 2.42x |
+| --noopt | padEnd(maxLength, string) | 5503.10ms | 2266.55ms | 2.43x |
+| --noopt | padStart(maxLength) | 6515.60ms | 3048.55ms | 2.14x |
+| --noopt | padEnd(maxLength) | 6482.80ms | 3088.35ms | 2.10x |
+|  | padStart(maxLength, string) | 1199.80ms | 791.30ms | 1.52x |
+|  | padEnd(maxLength, string) | 1185.35ms | 785.40ms | 1.51x |
+|  | padStart(maxLength) | 1050.25ms | 1031.20ms | 1.02x |
+|  | padEnd(maxLength) | 1051.65ms | 1037.00ms | 1.01x |
