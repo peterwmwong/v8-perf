@@ -27,6 +27,8 @@ console.log('|        |  Method  | Before | After | Improvement |');
 console.log('|--------|----------|--------|-------|-------------|');
 
 const VARIANTS = {
+  'WeakMap-constructor': 'new WeakMap(keyValuePairs)',
+  'WeakSet-constructor': 'new WeakSet(keys)',
   'WeakMap-set-existing': 'WeakMap.set(existingKey, newValue)',
   'WeakMap-set-new': 'WeakMap.set(newKey, newValue)',
   'WeakSet-add-existing': 'WeakSet.add(existingKey)',

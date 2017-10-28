@@ -14,6 +14,10 @@ const weakMapSet = (weakmap, key) => { weakmap.set(key, {}); };
 const weakSetAdd = (weakset, key) => { weakset.add(key); };
 
 const VARIANTS = {
+  'WeakMap-constructor': {
+    setup(){ return null; },
+    run(){ return new WeakMap(KEY_VALUES); }
+  },
   'WeakMap-set-existing': {
     setup(){ return new WeakMap(KEY_VALUES); },
     run: weakMapSet
@@ -23,6 +27,10 @@ const VARIANTS = {
     run: weakMapSet
   },
 
+  'WeakSet-constructor': {
+    setup(){ return null; },
+    run() { return new WeakSet(KEYS); }
+  },
   'WeakSet-add-existing': {
     setup(){ return new WeakSet(KEYS); },
     run: weakSetAdd
@@ -60,11 +68,15 @@ console.log(Date.now() - start);
 
 |        |  Method  | Before | After | Improvement |
 |--------|----------|--------|-------|-------------|
-| --noopt | WeakMap.set(existingKey, newValue) | 127.60ms | 85.10ms | 1.50x |
-| --noopt | WeakMap.set(newKey, newValue) | 74.30ms | 51.60ms | 1.44x |
-| --noopt | WeakSet.add(existingKey) | 118.00ms | 73.05ms | 1.62x |
-| --noopt | WeakSet.add(newKey) | 70.20ms | 48.50ms | 1.45x |
-|  | WeakMap.set(existingKey, newValue) | 55.75ms | 29.90ms | 1.86x |
-|  | WeakMap.set(newKey, newValue) | 37.75ms | 22.70ms | 1.66x |
-|  | WeakSet.add(existingKey) | 52.90ms | 26.95ms | 1.96x |
-|  | WeakSet.add(newKey) | 34.70ms | 21.20ms | 1.64x |
+| --noopt | new WeakMap(keyValuePairs) | 2219.05ms | 1424.60ms | 1.56x |
+| --noopt | new WeakSet(keys) | 1953.25ms | 1178.00ms | 1.66x |
+| --noopt | WeakMap.set(existingKey, newValue) | 128.50ms | 80.25ms | 1.60x |
+| --noopt | WeakMap.set(newKey, newValue) | 74.40ms | 49.45ms | 1.50x |
+| --noopt | WeakSet.add(existingKey) | 115.75ms | 68.65ms | 1.69x |
+| --noopt | WeakSet.add(newKey) | 70.45ms | 45.85ms | 1.54x |
+|  | new WeakMap(keyValuePairs) | 952.35ms | 480.15ms | 1.98x |
+|  | new WeakSet(keys) | 914.35ms | 444.65ms | 2.06x |
+|  | WeakMap.set(existingKey, newValue) | 54.25ms | 25.75ms | 2.11x |
+|  | WeakMap.set(newKey, newValue) | 37.40ms | 20.65ms | 1.81x |
+|  | WeakSet.add(existingKey) | 51.60ms | 22.80ms | 2.26x |
+|  | WeakSet.add(newKey) | 34.60ms | 20.10ms | 1.72x |

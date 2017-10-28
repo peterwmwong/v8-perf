@@ -11,6 +11,10 @@ const weakMapSet = (weakmap, key) => { weakmap.set(key, {}); };
 const weakSetAdd = (weakset, key) => { weakset.add(key); };
 
 const VARIANTS = {
+  'WeakMap-constructor': {
+    setup(){ return null; },
+    run(){ return new WeakMap(KEY_VALUES); }
+  },
   'WeakMap-set-existing': {
     setup(){ return new WeakMap(KEY_VALUES); },
     run: weakMapSet
@@ -20,6 +24,10 @@ const VARIANTS = {
     run: weakMapSet
   },
 
+  'WeakSet-constructor': {
+    setup(){ return null; },
+    run() { return new WeakSet(KEYS); }
+  },
   'WeakSet-add-existing': {
     setup(){ return new WeakSet(KEYS); },
     run: weakSetAdd
