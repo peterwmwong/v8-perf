@@ -1,5 +1,6 @@
 const { execSync } = require('child_process');
 const { readFileSync } = require('fs');
+const drawBarChart = require('../drawChart');
 
 const BEFORE_D8 = '/p/google2/v8/out.gn/x64.release/d8';
 const AFTER_D8 = '/p/google3/v8/out.gn/x64.release/d8';
@@ -27,12 +28,12 @@ console.log('|        |  Method  | Before | After | Improvement |');
 console.log('|--------|----------|--------|-------|-------------|');
 
 const VARIANTS = {
-  'WeakMap-constructor': 'new WeakMap(keyValuePairs)',
+  'WeakMap-constructor': 'new WeakMap(pairs)',
   'WeakSet-constructor': 'new WeakSet(keys)',
-  'WeakMap-set-existing': 'WeakMap.set(existingKey, newValue)',
-  'WeakMap-set-new': 'WeakMap.set(newKey, newValue)',
+  'WeakMap-set-existing': 'WeakMap.set(existingKey, value)',
+  'WeakMap-set-new': 'WeakMap.set(key, value)',
   'WeakSet-add-existing': 'WeakSet.add(existingKey)',
-  'WeakSet-add-new': 'WeakSet.add(newKey)'
+  'WeakSet-add-new': 'WeakSet.add(key)'
 }
 
 const ARGS = [
@@ -40,10 +41,21 @@ const ARGS = [
   ''
 ];
 
+const results = [];
 for (const arg of ARGS) {
   for (const variant of Object.keys(VARIANTS)) {
     const after = runBench(AFTER_D8, arg, variant);
     const before = runBench(BEFORE_D8, arg, variant);
     console.log(`| ${arg} | ${VARIANTS[variant]} | ${before}ms | ${after}ms | ${(before / after).toFixed(2)}x |`);
+    results.push({
+      arg,
+      variant,
+      name: VARIANTS[variant],
+      before,
+      after
+    });
   }
 }
+
+drawBarChart(results.filter(r => r.variant.includes('constructor')));
+drawBarChart(results.filter(r => !r.variant.includes('constructor')));
