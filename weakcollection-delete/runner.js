@@ -1,5 +1,6 @@
 const { execSync } = require('child_process');
 const { readFileSync } = require('fs');
+const drawBarChart = require('../drawChart');
 
 const BEFORE_D8 = '/p/google2/v8/out.gn/x64.release/d8';
 const AFTER_D8 = '/p/google/v8/out.gn/x64.release/d8';
@@ -36,10 +37,20 @@ const ARGS = [
   ''
 ];
 
+const results = [];
 for (const arg of ARGS) {
   for (const variant of Object.keys(VARIANTS)) {
     const after = runBench(AFTER_D8, arg, variant);
     const before = runBench(BEFORE_D8, arg, variant);
     console.log(`| ${arg} | ${VARIANTS[variant]} | ${before}ms | ${after}ms | ${(before / after).toFixed(2)}x |`);
+    results.push({
+      arg,
+      variant,
+      name: VARIANTS[variant],
+      before,
+      after
+    });
   }
 }
+
+drawBarChart(results);
