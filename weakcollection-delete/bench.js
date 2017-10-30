@@ -7,16 +7,25 @@ const KEY_VALUES = Array.from(
   (_, i) => [ KEYS[i], { value: i } ]
 );
 
-const weakColSet = (weakcol, key) => { weakcol.delete(key); };
+const weakColDelete = (weakcol, key) => { weakcol.delete(key); };
+const weakColDeleteNonMember = (weakcol, key) => { weakcol.delete({}); };
 
 const VARIANTS = {
   'WeakMap-delete': {
     setup(){ return new WeakMap(KEY_VALUES); },
-    run: weakColSet
+    run: weakColDelete
   },
   'WeakSet-delete': {
     setup(){ return new WeakSet(KEYS); },
-    run: weakColSet
+    run: weakColDelete
+  },
+  'WeakMap-delete-nonmember': {
+    setup(){ return new WeakMap(KEY_VALUES); },
+    run: weakColDeleteNonMember
+  },
+  'WeakSet-delete-nonmember': {
+    setup(){ return new WeakSet(KEYS); },
+    run: weakColDeleteNonMember
   }
 };
 

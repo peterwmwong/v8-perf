@@ -29,7 +29,9 @@ console.log('|--------|----------|--------|-------|-------------|');
 
 const VARIANTS = {
   'WeakMap-delete': 'WeakMap.delete(key)',
-  'WeakSet-delete': 'WeakSet.delete(key)'
+  'WeakSet-delete': 'WeakSet.delete(key)',
+  'WeakMap-delete-nonmember': 'WeakMap.delete(nonMemberKey)',
+  'WeakSet-delete-nonmember': 'WeakSet.delete(nonMemberKey)'
 }
 
 const ARGS = [
