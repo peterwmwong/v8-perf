@@ -46,18 +46,18 @@ console.log(performance.now() - start);
 
 | Array size |  Method  | Before | After | Improvement |
 |------------|----------|--------|-------|-------------|
-| 1 | array of Smis | 5.08ms | 3.38ms | 1.50x |
-| 1 | array of Doubles | 5.98ms | 6.05ms | 0.99x |
-| 1 | array of Objects | 4.84ms | 4.81ms | 1.01x |
-| 8 | array of Smis | 13.00ms | 5.22ms | 2.49x |
-| 8 | array of Doubles | 16.90ms | 16.74ms | 1.01x |
-| 8 | array of Objects | 13.05ms | 12.87ms | 1.01x |
-| 16 | array of Smis | 21.36ms | 7.12ms | 3.00x |
-| 16 | array of Doubles | 26.63ms | 26.86ms | 0.99x |
-| 16 | array of Objects | 21.43ms | 21.26ms | 1.01x |
-| 32 | array of Smis | 38.18ms | 11.21ms | 3.41x |
-| 32 | array of Doubles | 47.82ms | 47.58ms | 1.01x |
-| 32 | array of Objects | 38.06ms | 38.19ms | 1.00x |
+| 1 | array of Smis | 4.97ms | 3.57ms | 1.39x |
+| 1 | array of Doubles | 6.12ms | 6.19ms | 0.99x |
+| 1 | array of Objects | 4.89ms | 4.83ms | 1.01x |
+| 8 | array of Smis | 13.05ms | 5.26ms | 2.48x |
+| 8 | array of Doubles | 16.39ms | 16.59ms | 0.99x |
+| 8 | array of Objects | 13.08ms | 13.31ms | 0.98x |
+| 16 | array of Smis | 21.62ms | 6.96ms | 3.11x |
+| 16 | array of Doubles | 26.75ms | 26.45ms | 1.01x |
+| 16 | array of Objects | 21.44ms | 21.65ms | 0.99x |
+| 32 | array of Smis | 38.50ms | 11.13ms | 3.46x |
+| 32 | array of Doubles | 47.67ms | 47.84ms | 1.00x |
+| 32 | array of Objects | 40.39ms | 39.61ms | 1.02x |
 
 
-![Results](https://image-charts.com/chart?cht=bhg&amp;chs=700x600&amp;chds=0,47.82&amp;chco=c6d9fd,4d89f9&amp;chbh=a&amp;chxs=0,000000,0,0,_&amp;chxt=y,x&amp;chm=N,000000,0,,10|N,000000,1,,10&amp;chma=10,50&amp;chtt=Time%20in%20ms%20(less%20is%20better)%20%5B*%20est%20startup%20perf%5D&amp;chdl=before|after&amp;chxl=0:|1:|array%20of%20Smis|array%20of%20Doubles|array%20of%20Objects|array%20of%20Smis|array%20of%20Doubles|array%20of%20Objects|array%20of%20Smis|array%20of%20Doubles|array%20of%20Objects|array%20of%20Smis|array%20of%20Doubles|array%20of%20Objects&amp;chd=t:5.08,5.98,4.84,13.00,16.90,13.05,21.36,26.63,21.43,38.18,47.82,38.06|3.38,6.05,4.81,5.22,16.74,12.87,7.12,26.86,21.26,11.21,47.58,38.19,_ "Results")
+![Results](https://image-charts.com/chart?cht=bhg&amp;chs=700x600&amp;chds=0,47.84&amp;chco=c6d9fd,4d89f9&amp;chbh=a&amp;chxs=0,000000,0,0,_&amp;chxt=y,x&amp;chm=N,000000,0,,10|N,000000,1,,10&amp;chma=10,50&amp;chtt=Time%20in%20ms%20(less%20is%20better)%20%5B*%20est%20startup%20perf%5D&amp;chdl=before|after&amp;chxl=0:|1:|array%20of%20Smis%201|array%20of%20Doubles%201|array%20of%20Objects%201|array%20of%20Smis%208|array%20of%20Doubles%208|array%20of%20Objects%208|array%20of%20Smis%2016|array%20of%20Doubles%2016|array%20of%20Objects%2016|array%20of%20Smis%2032|array%20of%20Doubles%2032|array%20of%20Objects%2032&amp;chd=t:4.97,6.12,4.89,13.05,16.39,13.08,21.62,26.75,21.44,38.50,47.67,40.39|3.57,6.19,4.83,5.26,16.59,13.31,6.96,26.45,21.65,11.13,47.84,39.61,_ "Results")

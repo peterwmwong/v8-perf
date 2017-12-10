@@ -52,7 +52,7 @@ for (const d8arg of ['']) {
         d8arg,
         arg,
         variant,
-        name: VARIANTS[variant],
+        name: `${VARIANTS[variant]} ${arg}`,
         before,
         after
       });

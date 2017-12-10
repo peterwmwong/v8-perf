@@ -6,8 +6,7 @@ const VALUES_SMIS = Array.from({ length: LENGTH }, (_, i) => i);
 const VALUES_DOUBLES = VALUES_SMIS.map(i => i + 0.5);
 const VALUES_OBJS = VALUES_SMIS.map(i => ({}));
 
-const FIND_INDEX = LENGTH - 1;
-const PREDICATE =  (_, i) => i === FIND_INDEX;
+const PREDICATE =  (_, i, a) => i === a.length - 1;
 
 const VARIANTS = {
   'smis'() {
