@@ -1,3 +1,5 @@
+Documents performance impact of https://chromium-review.googlesource.com/c/v8/v8/+/846378
+
 ## Benchmark: `bench.js`
 
 ```js
