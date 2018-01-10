@@ -80,18 +80,18 @@ console.log(performance.now() - start);
 
 |  Size  |  Method  | Before | After | Improvement |
 |--------|----------|--------|-------|-------------|
-| 256 | left overlap | 10.33ms | 3.02ms | 3.42x |
-| 256 | right overlap | 10.25ms | 3.02ms | 3.39x |
-| 256 | middle overlap | 10.40ms | 3.02ms | 3.44x |
-| 256 | no overlap | 2.02ms | 2.12ms | 0.95x |
-| 4096 | left overlap | 151.08ms | 25.17ms | 6.00x |
-| 4096 | right overlap | 149.25ms | 25.42ms | 5.87x |
-| 4096 | middle overlap | 149.45ms | 24.97ms | 5.99x |
-| 4096 | no overlap | 23.19ms | 23.69ms | 0.98x |
-| 16384 | left overlap | 595.80ms | 95.74ms | 6.22x |
-| 16384 | right overlap | 591.97ms | 95.68ms | 6.19x |
-| 16384 | middle overlap | 604.28ms | 96.18ms | 6.28x |
-| 16384 | no overlap | 91.19ms | 93.09ms | 0.98x |
+| 256 | left overlap | 10.38ms | 2.36ms | 4.40x |
+| 256 | right overlap | 10.22ms | 2.35ms | 4.35x |
+| 256 | middle overlap | 10.39ms | 2.36ms | 4.40x |
+| 256 | no overlap | 2.01ms | 1.84ms | 1.09x |
+| 4096 | left overlap | 152.84ms | 19.60ms | 7.80x |
+| 4096 | right overlap | 150.98ms | 19.71ms | 7.66x |
+| 4096 | middle overlap | 148.63ms | 19.56ms | 7.60x |
+| 4096 | no overlap | 23.10ms | 18.78ms | 1.23x |
+| 16384 | left overlap | 604.53ms | 75.55ms | 8.00x |
+| 16384 | right overlap | 595.73ms | 79.43ms | 7.50x |
+| 16384 | middle overlap | 596.21ms | 75.91ms | 7.85x |
+| 16384 | no overlap | 91.47ms | 73.11ms | 1.25x |
 
 
-![Results](https://image-charts.com/chart?cht=bhg&amp;chs=700x600&amp;chds=0,604.28&amp;chco=c6d9fd,4d89f9&amp;chbh=a&amp;chxs=0,000000,0,0,_&amp;chxt=y,x&amp;chm=N,000000,0,,10|N,000000,1,,10&amp;chma=10,50&amp;chtt=Time%20in%20ms%20(less%20is%20better)&amp;chdl=before|after&amp;chxl=0:|1:|256%20left%20overlap|256%20right%20overlap|256%20middle%20overlap|256%20no%20overlap|4096%20left%20overlap|4096%20right%20overlap|4096%20middle%20overlap|4096%20no%20overlap|16384%20left%20overlap|16384%20right%20overlap|16384%20middle%20overlap|16384%20no%20overlap&amp;chd=t:10.33,10.25,10.40,2.02,151.08,149.25,149.45,23.19,595.80,591.97,604.28,91.19|3.02,3.02,3.02,2.12,25.17,25.42,24.97,23.69,95.74,95.68,96.18,93.09,_ "Results")
+![Results](https://image-charts.com/chart?cht=bhg&amp;chs=700x600&amp;chds=0,604.53&amp;chco=c6d9fd,4d89f9&amp;chbh=a&amp;chxs=0,000000,0,0,_&amp;chxt=y,x&amp;chm=N,000000,0,,10|N,000000,1,,10&amp;chma=10,50&amp;chtt=Time%20in%20ms%20(less%20is%20better)%20%5B*%20est%20startup%20perf%5D&amp;chdl=before|after&amp;chxl=0:|1:|256%20left%20overlap*|256%20right%20overlap*|256%20middle%20overlap*|256%20no%20overlap*|4096%20left%20overlap*|4096%20right%20overlap*|4096%20middle%20overlap*|4096%20no%20overlap*|16384%20left%20overlap*|16384%20right%20overlap*|16384%20middle%20overlap*|16384%20no%20overlap*&amp;chd=t:10.38,10.22,10.39,2.01,152.84,150.98,148.63,23.10,604.53,595.73,596.21,91.47|2.36,2.35,2.36,1.84,19.60,19.71,19.56,18.78,75.55,79.43,75.91,73.11,_ "Results")
