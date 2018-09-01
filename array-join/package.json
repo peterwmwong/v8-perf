@@ -1,0 +1,8 @@
+{
+  "name": "array-join",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "simple-statistics": "^5.3.1"
+  }
+}
