@@ -7,9 +7,9 @@ const BENCH_JS = 'bench.js';
 
 const doExceSync = cmd => execSync(cmd);
 const MIN_SAMPLES = 100;
-const MAX_SAMPLES = 1000;
+const MAX_SAMPLES = 150;
 const MAX_DEV_PCT = 0.05;
-const ROUND_MASK = 10**3
+const ROUND_MASK = 10**3;
 const round = (v) => ((v * ROUND_MASK)|0) / ROUND_MASK;
 
 const runBench = (d8Binary, ...args) => {
@@ -42,16 +42,21 @@ const SETUP_VARIANTS = [
   'double',
   'object',
   'sparseSmi',
-  'sparseString'
+  'sparseString',
+  'mix'
 ];
+const MAX_SETUP_VARIANT_LENGTH =
+  Math.max(...SETUP_VARIANTS.map(v => v.length));
 
 const VARIANTS = [
   'join',
   'joinSep',
   // TODO(pwong): Add 'joinSepMultiChar'
   // TODO(pwong): Add 'joinSepTwoByte',
-  'joinSepMultiChar'
+  // 'joinSepMultiChar'
 ];
+const MAX_VARIANT_LENGTH =
+  Math.max(...VARIANTS.map(v => v.length));
 
 const ARRAY_SIZES = [
   1,
@@ -63,13 +68,18 @@ const ARRAY_SIZES = [
   128,
   256,
   512,
-  1024
+  1024,
+  4 * 1024,
+  6 * 1024,
+  8 * 1024,
+  10 * 1024
   // TODO(pwong): go higher
   // TODO(pwong): Add setup that actually triggers
   //              **the sparse optimization** T_T :) XD
 ];
+const MAX_ARRAY_SIZES_LENGTH =
+  Math.max(...ARRAY_SIZES.map(v => (v+'').length));
 
-const allResults = [];
 let headerRow = null;
 for (const warmup of ['no-warmup'/*, 'with-warmup'*/]) {
   for (const variant of VARIANTS) {
@@ -92,7 +102,15 @@ for (const warmup of ['no-warmup'/*, 'with-warmup'*/]) {
           'after-samples': after.samples,
           'before-samples': before.samples,
         };
-        // console.log(JSON.stringify(result));
+
+        console.log(
+          variant.padEnd(MAX_VARIANT_LENGTH),
+          setupVariant.padEnd(MAX_SETUP_VARIANT_LENGTH),
+          (arraySize + '').padStart(MAX_ARRAY_SIZES_LENGTH),
+          'delta', result.delta.toFixed(4),
+          'mad', `${before.stddev.toFixed(4)}/${after.stddev.toFixed(4)}`,
+          'significant', (Math.abs(1 - result.delta) - (before.stddev / before.mean)).toFixed(4)
+        );
         results.push(result);
       }
       const row = [
@@ -114,9 +132,9 @@ for (const warmup of ['no-warmup'/*, 'with-warmup'*/]) {
       })
       if (headerRow === null) {
         headerRow = row.map(col => col.label).join(',');
-        console.log(headerRow);
+        // console.log(headerRow);
       }
-      console.log(row.map(col => col.value).join(','));
+      // console.log(row.map(col => col.value).join(','));
     }
   }
 }

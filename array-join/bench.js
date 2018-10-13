@@ -1,6 +1,5 @@
 'use strict';
 const ITERATIONS = 1000;
-// const ITERATIONS = 250;
 const WITH_WARMUP = arguments[0] == 'with-warmup';
 const SETUP_VARIANT_NAME = arguments[1];
 const VARIANT_NAME = arguments[2];
@@ -32,6 +31,14 @@ const SETUP_VARIANTS = {
     for (let i = 0; i < ARRAY_SIZE; ++i) array[i] = new Obj(`Item no. ${i}`);
     return array;
   },
+  mix() {
+    return [
+      this.smi(),
+      this.string(),
+      this.double(),
+      this.object()
+    ];
+  },
   sparseSmi() {
     const array = SETUP_VARIANTS.smi();
     array.length = array.length * 2;
@@ -53,11 +60,20 @@ const array = SETUP_VARIANTS[SETUP_VARIANT_NAME]();
 const func = VARIANTS[VARIANT_NAME];
 
 let result = 0; // Defeat Escape Analysis
-const bench = () => {
-  for (let i = 0; i < ITERATIONS; i++) {
-    result = func(array);
-  }
-};
+const bench =
+  SETUP_VARIANT_NAME === 'mix'
+  ? () => {
+      for (let i = 0; i < ITERATIONS; i++) {
+        for (let j = 0; j < array.length; j++) {
+          result = func(array[j]);
+        }
+      }
+    }
+  : () => {
+      for (let i = 0; i < ITERATIONS; i++) {
+        result = func(array);
+      }
+    };
 
 // TODO(pwong): This is meant to test when TF kicks in. We should use
 // `--allow-natives-syntax` to more quickly/effeciently do this.
